@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+FORMATTER_JAR=google-java-format-1.7-all-deps.jar
+
+if [ ! -f $FORMATTER_JAR ]; then
+   curl -sL --output $FORMATTER_JAR https://github.com/google/google-java-format/releases/download/google-java-format-1.7/google-java-format-1.7-all-deps.jar
+fi
+
+git fetch origin master
+
+git diff --name-only --diff-filter=ACMR origin/master | grep "\.java$" | xargs java -jar $FORMATTER_JAR --skip-sorting-imports --replace

@@ -2,3 +2,6 @@ logging:
   level: INFO
   loggers:
     io.github.balloonio: DEBUG
+
+template: Hello world, %s
+defaultName: Stranger
