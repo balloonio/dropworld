@@ -29,6 +29,10 @@ public class HelloWorldResource {
   @Timed
   public Saying sayHello(@QueryParam("name") Optional<String> name) {
     final String value = String.format(template, name.orElse(defaultName));
+
+    final Rxjava2Playground playground = new Rxjava2Playground();
+    playground.testMain();
+
     return new Saying(counter.incrementAndGet(), value);
   }
 }
